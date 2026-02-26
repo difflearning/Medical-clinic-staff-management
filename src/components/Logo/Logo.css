@@ -1,0 +1,30 @@
+
+
+.app-logo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px dashed red;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  /* height: 40px; */
+}
+
+.logo h3 {
+  margin: 0;
+  color: #fff;  /* or a token */
+}
+
+.menu-icon {
+  font-size: 16px;
+  cursor: pointer;
+  color: #5c5a5a;  /* or a token */
+}

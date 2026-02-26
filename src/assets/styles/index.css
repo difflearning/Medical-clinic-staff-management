@@ -1,0 +1,13 @@
+/* assets/styles/index.css */
+@import './tokens/colors.css';
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './themes/light.css';
+
+@import './antd/button.css';
+@import './antd/form.css';
+@import './antd/table.css';
+@import './antd/menu.css';
+
+
+@import './reset.css';

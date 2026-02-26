@@ -1,0 +1,37 @@
+/* assets/styles/tokens/colors.css */
+
+:root {
+  /* =========================
+     PRIMARY (Indigo)
+     ========================= */
+  --primary-700: #6165cb;
+  --primary-500: #7e80ff;
+  --primary-300: #a3a5ff;
+  --primary-100: #cdccff;
+
+  /* Semantic aliases */
+  --color-primary: var(--primary-500);
+  --color-primary-hover: var(--primary-300);
+  --color-primary-active: var(--primary-700);
+  --color-primary-bg: var(--primary-100);
+
+  /* =========================
+     SUCCESS (Green)
+     ========================= */
+  --success-700: #3fa96a;
+  --success-500: #67ca86;
+  --success-300: #8fe0aa;
+  --success-100: #d7f5e3;
+
+  /* Semantic aliases */
+  --color-success: var(--success-500);
+  --color-success-hover: var(--success-300);
+  --color-success-active: var(--success-700);
+  --color-success-bg: var(--success-100);
+
+  /* =========================
+     Text
+     ========================= */
+  --text-heading: #1f1f1f;
+  --text-body: #434343;
+}

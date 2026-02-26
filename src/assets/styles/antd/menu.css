@@ -1,0 +1,43 @@
+/* ===============================
+   Submenu items (child items)
+================================ */
+
+/* Normal submenu items */
+.ant-menu-submenu .ant-menu-item {
+  color: #333;
+  padding-left: 28px;
+}
+
+/* Hover on submenu items */
+.ant-menu-submenu .ant-menu-item:hover {
+  background-color: var(--color-primary-hover) !important;
+  color: #fff;
+}
+
+/* Selected submenu item */
+.ant-menu-submenu .ant-menu-item-selected {
+  background-color: var(--color-primary-hover) !important;
+  color: #fff;
+}
+
+
+/* ===============================
+   Submenu parent (title)
+================================ */
+
+/* Normal submenu title */
+.ant-menu-submenu-title {
+  color: #fff;
+}
+
+/* Hover on submenu title */
+.ant-menu-submenu-title:hover {
+  background-color: var(--color-primary-hover) !important;
+  color: #fff;
+}
+
+/* Selected (active) submenu parent */
+.ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background-color: var(--color-primary-hover) !important;
+  color: #fff;
+}
