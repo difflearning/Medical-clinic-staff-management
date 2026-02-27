@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -6,19 +6,18 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Badge, Col, Progress, Row, Space } from 'antd';
+import { Col, Progress, Row, Space } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-// ✅ Helper to read CSS variables
+// Helper to read CSS variables
 const cssVar = (name) =>
   getComputedStyle(document.documentElement)
     .getPropertyValue(name)
     .trim();
 
-// ✅ Center text plugin
+// Center text plugin
 const centerTextPlugin = {
   id: 'centerText',
   afterDraw(chart) {
@@ -32,13 +31,11 @@ const centerTextPlugin = {
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    // Main number
-    ctx.font = 'bold 26px Inter, Arial';
+    ctx.font = 'bold 26px Arial';
     ctx.fillStyle = '#000';
     ctx.fillText('70%', x, y);
 
-    // Subtitle
-    ctx.font = '12px Inter, Arial';
+    ctx.font = '12px Arial';
     ctx.fillStyle = '#8c8c8c';
     ctx.fillText('Used', x, y + 22);
 
@@ -46,7 +43,7 @@ const centerTextPlugin = {
   },
 };
 
-
+export default function UserTypesChart() {
   const doughnutData = {
     labels: ['Used', 'Remaining', 'Reserved', 'Blocked'],
     datasets: [
@@ -58,8 +55,8 @@ const centerTextPlugin = {
           cssVar('--primary-300'),
           cssVar('--primary-100'),
         ],
-        spacing: 6,        // 👈 gap between slices
-        borderWidth: 0,    // 👈 IMPORTANT: no black borders
+        spacing: 6,
+        borderWidth: 0,
       },
     ],
   };
@@ -67,127 +64,91 @@ const centerTextPlugin = {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    cutout: '75%',       // 👈 thinner slices
+    cutout: '75%',
     plugins: {
-      legend: {
-        display: false,  // 👈 remove bars under chart
-      },
-      tooltip: {
-        enabled: true,
-      },
+      legend: { display: false },
+      tooltip: { enabled: true },
     },
   };
 
+  const progressItems = [
+    { label: 'Progress Bar Label', percent: 10 },
+    { label: 'Progress Bar Label', percent: 25 },
+    { label: 'Progress Bar Label', percent: 40 },
+    { label: 'Progress Bar Label', percent: 5 },
+  ];
 
-
-
-export default function UserTypesChart() {
   return (
-    
- 
+    <Row gutter={16} align="middle">
+      {/* Doughnut */}
+      <Col span={10}>
+        <div style={{ width: '100%', height: 280 }}>
+          <Doughnut
+            data={doughnutData}
+            options={options}
+            plugins={[centerTextPlugin]}
+          />
+        </div>
+      </Col>
 
-        <Row gutter={16} align="middle">
-        {/* Left: Doughnut chart */}
-        <Col span={10}>
-  
+      {/* Right side */}
+      <Col span={14}>
+        {/* Header */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: 16,
+          }}
+        >
+          <h4 style={{ margin: 0 }}>Table Title</h4>
+          <EllipsisOutlined style={{ cursor: 'pointer' }} />
+        </div>
 
-
-      <div style={{ width: '100%', height: 280 }}>
-      <Doughnut
-        data={doughnutData}
-        options={options}
-        plugins={[centerTextPlugin]}
-      />
-    </div>
-        </Col>
-
-        {/* Right: Title + Ellipsis */}
-        <Col  span={14}>
+        {/* Progress list */}
+        <Space direction="vertical" style={{ width: '100%' }} size={12}>
+          {progressItems.map((item) => (
             <div
-            style={{
+              key={item.label}
+              style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                border: '1px solid red',
-                padding: '0 8px', // optional spacing
-                height: '100%',   // optional: make div full height of Col
-                
-
-            }}
+                gap: 8,
+              }}
             >
-            <h4>Table Title</h4>
-            <EllipsisOutlined style={{ cursor: 'pointer' }} />
+              {/* Color square */}
+              <div
+                style={{
+                  width: 14,
+                  height: 14,
+                  borderRadius: 4,
+                  backgroundColor: cssVar('--primary-500'),
+                }}
+              />
 
+              {/* Label + progress */}
+              <div style={{ flex: 1 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <span>{item.label}</span>
+                  <span>{item.percent}%</span>
+                </div>
 
+                <Progress
+                  percent={item.percent}
+                  showInfo={false}
+                  strokeColor={cssVar('--primary-500')}
+                />
+              </div>
             </div>
-
-
-
-            <Space  vertical style={{width:'100%'}}>
-
-
-                
-            <div style={{display:'flex',alignItems:'center',border:'1px dashed red',gap:7}}>
-
-                 <div style={{padding:1,backgroundColor:'grey',width:17,height:17,borderRadius:4}}></div>
-
-                  <div style={{display:'flex',flexDirection:'column',flex:1}}> 
-
-                        <div style={{display:'flex',justifyContent:'space-between'}}>
-                            <h4 style={{margin:0}}>Progress Bar Label</h4>
-                            <span>10%</span>
-                        </div>
- 
-                        <Progress percent={10} showInfo={false} strokeColor='var(--primary-500)' />
-                  </div>
-            </div>
-            <div style={{display:'flex',alignItems:'center',border:'1px dashed red',gap:7}}>
-
-                 <div style={{padding:1,backgroundColor:'grey',width:17,height:17,borderRadius:4}}></div>
-
-                  <div style={{display:'flex',flexDirection:'column',flex:1}}> 
-
-                        <div style={{display:'flex',justifyContent:'space-between'}}>
-                            <h4 style={{margin:0}}>Progress Bar Label</h4>
-                            <span>10%</span>
-                        </div>
- 
-                        <Progress percent={10} showInfo={false} strokeColor='var(--primary-500)' />
-                  </div>
-            </div>
-            <div style={{display:'flex',alignItems:'center',border:'1px dashed red',gap:7}}>
-
-                 <div style={{padding:1,backgroundColor:'grey',width:17,height:17,borderRadius:4}}></div>
-
-                  <div style={{display:'flex',flexDirection:'column',flex:1}}> 
-
-                        <div style={{display:'flex',justifyContent:'space-between'}}>
-                            <h4 style={{margin:0}}>Progress Bar Label</h4>
-                            <span>10%</span>
-                        </div>
- 
-                        <Progress percent={10} showInfo={false} strokeColor='var(--primary-500)' />
-                  </div>
-            </div>
-            <div style={{display:'flex',alignItems:'center',border:'1px dashed red',gap:7}}>
-
-                 <div style={{padding:1,backgroundColor:'grey',width:17,height:17,borderRadius:4}}></div>
-
-                  <div style={{display:'flex',flexDirection:'column',flex:1}}> 
-
-                        <div style={{display:'flex',justifyContent:'space-between'}}>
-                            <h4 style={{margin:0}}>Progress Bar Label</h4>
-                            <span>10%</span>
-                        </div>
- 
-                        <Progress percent={10} showInfo={false} strokeColor='var(--primary-500)' />
-                  </div>
-            </div>
-            </Space>
-
-
-
-        </Col>
-        </Row>
-  )
+          ))}
+        </Space>
+      </Col>
+    </Row>
+  );
 }
