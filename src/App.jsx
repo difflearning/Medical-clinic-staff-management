@@ -5,6 +5,8 @@ import { Content, Footer, Header } from 'antd/es/layout/layout'
 import { ArrowUpOutlined, BellOutlined, MenuOutlined, RobotOutlined, SearchOutlined } from '@ant-design/icons';
 import Logo from './components/Logo/Logo'
 import SideMenu from './components/Menu/SideMenu.jsx';
+import StatCard from './components/Card/StatCard.jsx';
+import UserTypesChart from './components/UserTypes/UserTypesChart.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -41,126 +43,57 @@ function App() {
 
                   <Row  gutter={[7,16]}>
 
-                      <Col span={6}>
-                            <Card className={{shad}}>
-                                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-
-                                  <div>
-                                      <h4 style={{margin:0}}>Total Shifts</h4>
-                                      <span>17</span>
-                                  </div>
-
-                                   <div
-                                        style={{
-                                          display: 'inline-flex',
-                                          alignItems: 'center',
-                                          gap: 6,
-                                          padding: '2px 6px',
-                                          borderRadius: 6,
-                                          backgroundColor: 'var(--color-success-bg)',
-                         
-                                          fontSize: 12,
-                                          fontWeight: 500,
-                                          color:'green'
-                                        }}
-                                      >
-                                        <ArrowUpOutlined />
-                                        00%
-                                      </div>
-                                                                      </div>
-
-                            </Card>
+                      <Col span={6} sm={24} xs={24} lg={6}>
+                          <StatCard name="Total Shifts" number="36" percentage={30.00}  />
                       </Col>
-                      <Col span={6}>
-                            <Card>
-                                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-
-                                  <div>
-                                      <h4 style={{margin:0}}>Total Shifts</h4>
-                                      <span>17</span>
-                                  </div>
-
-                                   <div
-                                        style={{
-                                          display: 'inline-flex',
-                                          alignItems: 'center',
-                                          gap: 6,
-                                          padding: '2px 6px',
-                                          borderRadius: 6,
-                                          backgroundColor: 'var(--color-success-bg)',
-                         
-                                          fontSize: 12,
-                                          fontWeight: 500,
-                                          color:'green'
-                                        }}
-                                      >
-                                        <ArrowUpOutlined />
-                                        00%
-                                      </div>
-                                                                      </div>
-
-                            </Card>
+                      <Col span={6}  sm={24} xs={24} lg={6}>
+                          <StatCard name="Total Hours" number="124" percentage={30.00}  />
                       </Col>
-                      <Col span={6}>
-                            <Card>
-                                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-
-                                  <div>
-                                      <h4 style={{margin:0}}>Total Shifts</h4>
-                                      <span>17</span>
-                                  </div>
-
-                                   <div
-                                        style={{
-                                          display: 'inline-flex',
-                                          alignItems: 'center',
-                                          gap: 6,
-                                          padding: '2px 6px',
-                                          borderRadius: 6,
-                                          backgroundColor: 'var(--color-success-bg)',
-                         
-                                          fontSize: 12,
-                                          fontWeight: 500,
-                                          color:'green'
-                                        }}
-                                      >
-                                        <ArrowUpOutlined />
-                                        00%
-                                      </div>
-                                                                      </div>
-
-                            </Card>
+                      <Col span={6} sm={24} xs={24} lg={6}>
+                          <StatCard name="Fill Rate" number="56%" percentage="00.00"  />
                       </Col>
-                      <Col span={6}>
-                            <Card>
-                                <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-
-                                  <div>
-                                      <h4 style={{margin:0}}>Total Shifts</h4>
-                                      <span>17</span>
-                                  </div>
-
-                                   <div
-                                        style={{
-                                          display: 'inline-flex',
-                                          alignItems: 'center',
-                                          gap: 6,
-                                          padding: '2px 6px',
-                                          borderRadius: 6,
-                                          backgroundColor: 'var(--color-success-bg)',
-                         
-                                          fontSize: 12,
-                                          fontWeight: 500,
-                                          color:'green'
-                                        }}
-                                      >
-                                        <ArrowUpOutlined />
-                                        00%
-                                      </div>
-                                                                      </div>
-
-                            </Card>
+                      <Col span={6} sm={24} xs={24} lg={6}>
+                          <StatCard name="Sickness Rate" number="3%" percentage="00.00"  />
                       </Col>
+                  
+                  </Row>
+
+                  <Row gutter={[7,16]}>
+                      <Col span={13}>
+                      
+                        <Card>
+
+                          <div>
+
+                            <h4>User types in each department split by rank</h4>
+                            
+                            <div
+                                        style={{
+                                                                      display: 'inline-flex',
+                                                                      alignItems: 'center',
+                                                                      gap: 6,
+                                                                      padding: '2px 6px',
+                                                                      borderRadius: 6,
+                                                                      backgroundColor: 'var(--color-success-bg)',
+                                                     
+                                                                      fontSize: 12,
+                                                                      fontWeight: 500,
+                                                                      color:'green'
+                                                                    }}
+                                                                  >
+                                                                    <ArrowUpOutlined />
+                                                                    4.5%
+                                                                  </div>
+                          </div>
+
+
+                          <UserTypesChart/>
+                        </Card>
+                      </Col>  
+                      <Col span={11}>
+                      
+                          <Card>B</Card>
+                      </Col>  
                   </Row>
               </Content>
 
